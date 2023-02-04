@@ -2,4 +2,41 @@ body {
 	background-image: url("/images/main-bg.png");
 	background-position: center;
 	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+header {
+	position: absolute;
+	top: 2.5rem;
+
+	display: block;
+	width: 100%;
+	padding: 0 7rem;
+
+	img {
+		display: inline-block;
+		margin-bottom: 2.6rem;
+	}
+
+	.line {
+		height: 1px;
+		background: #1a1a1a;
+	}
+}
+
+.add {
+	background: #1a1a1a;
+	border-radius: 0.8rem;
+	padding: 1.8rem 13.5rem;
+	outline: none;
+	border: none;
+	cursor: pointer;
+
+	font-size: 2rem;
+	color: #fff;
+	font-style: normal;
+	font-weight: 500;
 }
