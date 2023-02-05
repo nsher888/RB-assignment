@@ -26,6 +26,13 @@ function validateInput(input, criteria) {
 	return criteria.test(input.value);
 }
 
+function showHidden(initial, pre) {
+	if (initial.value.length > 0) {
+		pre.previousElementSibling.classList.remove("hidden");
+	}
+	pre.innerHTML = initial.value;
+}
+
 twoGeorgians.forEach((input) => {
 	input.addEventListener("input", (i) => {
 		if (!validateInput(input, cr_twoGeorgian)) {
@@ -47,10 +54,7 @@ lname.addEventListener("input", () => {
 });
 
 email.addEventListener("input", () => {
-	if (email.value.length > 0) {
-		preEmail.previousElementSibling.classList.remove("hidden");
-	}
-	preEmail.innerHTML = email.value;
+	showHidden(email, preEmail);
 
 	if (!validateInput(email, cr_mail)) {
 		email.parentElement.classList.add("danger");
@@ -61,10 +65,8 @@ email.addEventListener("input", () => {
 });
 
 phone.addEventListener("input", () => {
-	if (phone.value.length > 0) {
-		prePhone.previousElementSibling.classList.remove("hidden");
-	}
-	prePhone.innerHTML = phone.value;
+	showHidden(phone, prePhone);
+
 	if (!validateInput(phone, cr_phone)) {
 		phone.parentElement.classList.add("danger");
 	} else {
@@ -80,8 +82,39 @@ fileInput.addEventListener("change", () => {
 });
 
 aboutText.addEventListener("input", () => {
-	if (aboutText.value.length > 0) {
-		aboutTextTitle.classList.remove("hidden");
-	}
-	preAboutText.innerHTML = aboutText.value;
+	showHidden(aboutText, preAboutText);
 });
+
+window.onbeforeunload = function () {
+	sessionStorage.setItem("firstName", fname.value);
+	sessionStorage.setItem("surname", lname.value);
+	sessionStorage.setItem("about", aboutText.value);
+	sessionStorage.setItem("email", email.value);
+	sessionStorage.setItem("telephone", phone.value);
+};
+
+window.onload = function () {
+	if (sessionStorage.firstName) {
+		fname.value = sessionStorage.firstName;
+		preName.innerHTML = sessionStorage.firstName;
+	}
+	if (sessionStorage.surname) {
+		lname.value = sessionStorage.surname;
+		preLastName.innerHTML = sessionStorage.surname;
+	}
+	if (sessionStorage.about) {
+		aboutText.value = sessionStorage.about;
+		preAboutText.innerHTML = sessionStorage.about;
+		preAboutText.previousElementSibling.classList.remove("hidden");
+	}
+	if (sessionStorage.email) {
+		email.value = sessionStorage.email;
+		preEmail.innerHTML = sessionStorage.email;
+		preEmail.previousElementSibling.classList.remove("hidden");
+	}
+	if (sessionStorage.telephone) {
+		phone.value = sessionStorage.telephone;
+		prePhone.innerHTML = sessionStorage.telephone;
+		prePhone.previousElementSibling.classList.remove("hidden");
+	}
+};
