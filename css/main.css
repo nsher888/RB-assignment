@@ -148,6 +148,7 @@ header .line {
 
 .right-container {
   width: 43%;
+  position: relative;
 }
 
 .page-title {
@@ -185,12 +186,20 @@ header .line {
   gap: 0.8rem;
 }
 
+.flex-row {
+  display: flex;
+}
+
 .mb-3 {
   margin-bottom: 3rem;
 }
 
 .mb-16 {
   margin-bottom: 16rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .form {
@@ -314,5 +323,60 @@ header .line {
 }
 
 .btn-next {
+  float: right;
+}
+
+.right-container::after {
+  content: url(../../images/weird-logo.svg);
+  position: absolute;
+  left: 7.8rem;
+  bottom: 4.4rem;
+}
+
+.right-container {
+  padding: 6.5rem 7.8rem;
+}
+.right-container .pre-fullname {
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+.right-container .pre-fullname > h3 {
+  font-size: 3.4rem;
+  color: #f93b1d;
+}
+.right-container .full-email {
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.right-container .full-email p {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+}
+.right-container .full-phone {
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.4rem;
+}
+.right-container .full-phone p {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+}
+.right-container .pre-about {
+  font-size: 1.8rem;
+  color: #f93b1d;
+  margin-bottom: 1.5rem;
+}
+.right-container .pre-about-text {
+  font-size: 1.6rem;
+  color: #000;
+  max-width: 43rem;
+}
+.right-container .pre-image {
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  margin-top: -10px;
+  margin-right: -40px;
   float: right;
 }/*# sourceMappingURL=main.css.map */
