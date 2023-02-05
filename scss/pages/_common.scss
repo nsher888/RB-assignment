@@ -58,6 +58,10 @@
 	margin-bottom: 3rem;
 }
 
+.mb-16 {
+	margin-bottom: 16rem;
+}
+
 // PERSONAL PAGE _ STYLES
 
 .form {
@@ -83,6 +87,7 @@
 }
 
 .text-input-c {
+	width: 100%;
 	border: 1px solid #bcbcbc;
 	border-radius: 4px;
 	padding: 1.4rem 1.6rem;
@@ -138,4 +143,53 @@
 		color: #fff;
 		cursor: pointer;
 	}
+}
+
+.input-container {
+	width: 100%;
+	position: relative;
+}
+
+.successful {
+	position: relative;
+
+	input {
+		border: 1px solid #98e37e;
+	}
+}
+
+.danger {
+	position: relative;
+
+	input {
+		border: 1px solid #ef5050;
+	}
+}
+
+.input-container.successful::after {
+	content: url("../../images/success.svg");
+	position: absolute;
+	top: 1.8rem;
+	right: 1.4rem;
+	pointer-events: none;
+}
+
+.input-container.danger::after {
+	content: url("../../images/danger.svg");
+	position: absolute;
+	top: 1.8rem;
+	right: -3.2rem;
+	pointer-events: none;
+}
+
+.successful:hover,
+.successful:active {
+	box-shadow: inset 0 0 0 1px #98e37e;
+}
+
+.phone {
+}
+
+.btn-next {
+	float: right;
 }
