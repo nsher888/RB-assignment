@@ -79,6 +79,13 @@ fileInput.addEventListener("change", () => {
 	const file = fileInput.files[0];
 	const objectUrl = URL.createObjectURL(file);
 	preImage.src = objectUrl;
+
+	const reader = new FileReader();
+
+	reader.addEventListener("load", () => {
+		sessionStorage.setItem("image", reader.result);
+	});
+	reader.readAsDataURL(file);
 });
 
 aboutText.addEventListener("input", () => {
@@ -116,5 +123,8 @@ window.onload = function () {
 		phone.value = sessionStorage.telephone;
 		prePhone.innerHTML = sessionStorage.telephone;
 		prePhone.previousElementSibling.classList.remove("hidden");
+	}
+	if (sessionStorage.image) {
+		preImage.src = sessionStorage.image;
 	}
 };
