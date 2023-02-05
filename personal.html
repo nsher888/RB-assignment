@@ -19,6 +19,76 @@
 				<h2>პირადი ინფო</h2>
 				<p>1/3</p>
 			</div>
+
+			<form action="" class="form">
+				<div class="first-row">
+					<div class="flex-column">
+						<label for="fname" class="label-c">სახელი</label>
+						<input
+							type="text"
+							id="fname"
+							class="fname text-input-c"
+							placeholder="ანზორ"
+						/>
+						<p class="hint-c">მინიმუმ 2 ასო, ქართული ასოები</p>
+					</div>
+
+					<div class="flex-column">
+						<label for="lname" class="label-c">გვარი</label>
+						<input
+							type="text"
+							id="lname"
+							class="lname text-input-c"
+							placeholder="მუმლაძე"
+						/>
+						<p class="hint-c">მინიმუმ 2 ასო, ქართული ასოები</p>
+					</div>
+				</div>
+
+				<div class="file-upload">
+					<label for="file" class="label-c"
+						>პირადი ფოტოს ატვირთვა</label
+					>
+					<input type="file" id="file" class="file" />
+					<label for="file" class="upload-btn">ატვირთვა</label>
+				</div>
+
+				<div class="flex-column mb-3">
+					<label for="about" class="label-c"
+						>ჩემ შესახებ (არასავალდებულო)</label
+					>
+					<textarea
+						name="about"
+						id="about"
+						class="about text-input-c"
+						placeholder="ზოგადი ინფო შენ შესახებ"
+					></textarea>
+				</div>
+
+				<div class="flex-column mb-3">
+					<label for="email" class="label-c">ელ.ფოსტა</label>
+					<input
+						type="email"
+						id="email"
+						class="email text-input-c"
+						placeholder="anzorr666@redberry.ge"
+					/>
+					<p class="hint-c">უნდა მთავრდებოდეს @redberry.ge-ით</p>
+				</div>
+
+				<div class="flex-column mb-3">
+					<label for="phone" class="label-c">მობილურის ნომერი</label>
+					<input
+						type="tel"
+						id="phone"
+						class="phone text-input-c"
+						placeholder="+995 551 12 34 56"
+					/>
+					<p class="hint-c">
+						უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
+					</p>
+				</div>
+			</form>
 		</div>
 		<div class="right-container"></div>
 	</body>

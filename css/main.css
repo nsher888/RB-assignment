@@ -166,4 +166,93 @@ header .line {
   height: 4rem;
   left: 4.8rem;
   top: 4.8rem;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.form {
+  padding-top: 7.7rem;
+}
+
+.first-row {
+  display: flex;
+  gap: 5.6rem;
+  margin-bottom: 4.8rem;
+}
+.first-row > div {
+  width: 50%;
+}
+
+.label-c {
+  font-size: 1.6rem;
+  color: #000000;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.text-input-c {
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding: 1.4rem 1.6rem;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.6);
+  outline: none;
+}
+
+.text-input-c:hover,
+.text-input-c:focus {
+  box-shadow: inset 0 0 0 1px #bcbcbc;
+  color: #000000;
+}
+
+.text-input-c:hover::-moz-placeholder, .text-input-c:focus::-moz-placeholder {
+  color: #000000;
+}
+
+.text-input-c:hover:-ms-input-placeholder, .text-input-c:focus:-ms-input-placeholder {
+  color: #000000;
+}
+
+.text-input-c:hover::placeholder,
+.text-input-c:focus::placeholder {
+  color: #000000;
+}
+
+.hint-c {
+  font-size: 1.4rem;
+  color: #2e2e2e;
+}
+
+.about {
+  overflow: auto;
+  outline: none;
+  box-shadow: none;
+  /*remove the resize handle on the bottom right*/
+  resize: none;
+  height: 10rem;
+  padding: 1.3rem 1.6rem;
+}
+
+.file-upload {
+  margin-bottom: 4.6rem;
+}
+.file-upload .file {
+  display: none;
+}
+.file-upload .upload-btn {
+  background: #0e80bf;
+  border-radius: 4px;
+  padding: 0.5rem 2rem;
+  margin-left: 1.9rem;
+  font-size: 1.4rem;
+  color: #fff;
+  cursor: pointer;
 }/*# sourceMappingURL=main.css.map */
