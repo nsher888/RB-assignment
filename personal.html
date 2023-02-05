@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>REDBERRY - Personal Info</title>
 		<link rel="stylesheet" href="css/main.css" />
+		<script src="js/index.js" defer></script>
 	</head>
 	<body class="split-container">
 		<a href="index.html">
@@ -24,23 +25,30 @@
 				<div class="first-row">
 					<div class="flex-column">
 						<label for="fname" class="label-c">სახელი</label>
-						<input
-							type="text"
-							id="fname"
-							class="fname text-input-c"
-							placeholder="ანზორ"
-						/>
+						<div class="input-container">
+							<input
+								type="text"
+								id="fname"
+								class="fname text-input-c twoGeorgian"
+								placeholder="ანზორ"
+								required
+							/>
+						</div>
+
 						<p class="hint-c">მინიმუმ 2 ასო, ქართული ასოები</p>
 					</div>
 
 					<div class="flex-column">
 						<label for="lname" class="label-c">გვარი</label>
-						<input
-							type="text"
-							id="lname"
-							class="lname text-input-c"
-							placeholder="მუმლაძე"
-						/>
+						<div class="input-container">
+							<input
+								type="text"
+								id="lname"
+								class="lname text-input-c twoGeorgian"
+								placeholder="მუმლაძე"
+								required
+							/>
+						</div>
 						<p class="hint-c">მინიმუმ 2 ასო, ქართული ასოები</p>
 					</div>
 				</div>
@@ -49,7 +57,7 @@
 					<label for="file" class="label-c"
 						>პირადი ფოტოს ატვირთვა</label
 					>
-					<input type="file" id="file" class="file" />
+					<input type="file" id="file" class="file" required />
 					<label for="file" class="upload-btn">ატვირთვა</label>
 				</div>
 
@@ -73,6 +81,7 @@
 							id="email"
 							class="email text-input-c"
 							placeholder="anzorr666@redberry.ge"
+							required
 						/>
 					</div>
 
@@ -81,12 +90,15 @@
 
 				<div class="flex-column mb-16">
 					<label for="phone" class="label-c">მობილურის ნომერი</label>
-					<input
-						type="tel"
-						id="phone"
-						class="phone text-input-c"
-						placeholder="+995 551 12 34 56"
-					/>
+					<div class="input-container">
+						<input
+							type="tel"
+							id="phone"
+							class="phone text-input-c"
+							placeholder="+995 551 12 34 56"
+							required
+						/>
+					</div>
 					<p class="hint-c">
 						უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს
 					</p>
