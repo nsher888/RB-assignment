@@ -176,7 +176,7 @@
 }
 
 .input-container.successful::after {
-	content: url("../../images/success.svg");
+	content: url("../images/success.svg");
 	position: absolute;
 	top: 1.8rem;
 	right: 1.4rem;
@@ -184,7 +184,7 @@
 }
 
 .input-container.danger::after {
-	content: url("../../images/danger.svg");
+	content: url("../images/danger.svg");
 	position: absolute;
 	top: 1.8rem;
 	right: -3.2rem;
@@ -203,7 +203,7 @@
 // RIGHT CONTAINER
 
 .right-container::after {
-	content: url(../../images/weird-logo.svg);
+	content: url(../images/weird-logo.svg);
 	position: absolute;
 	left: 7.8rem;
 	bottom: 4.4rem;

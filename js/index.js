@@ -7,6 +7,7 @@ const twoGeorgians = document.querySelectorAll(".twoGeorgian");
 const fileInput = document.querySelector("#file");
 const aboutText = document.querySelector("#about");
 const aboutTextTitle = document.querySelector(".pre-about");
+const backArrow = document.querySelector("#back-arrow");
 
 // PREVIEW ELEMENTS
 const preImage = document.querySelector(".pre-image");
@@ -15,6 +16,14 @@ const preLastName = document.querySelector(".pre-lname");
 const preEmail = document.querySelector(".pre-email");
 const prePhone = document.querySelector(".pre-phone");
 const preAboutText = document.querySelector(".pre-about-text");
+
+// ERASE STORAGE ON BACK ARROW CLICK
+
+let shouldEraseStorage = false;
+backArrow.addEventListener("click", () => {
+	shouldEraseStorage = true;
+	sessionStorage.clear();
+});
 
 // REGEX FOR VALIDATION
 const cr_twoGeorgian = /^[ა-ჰ]{2,}$/;
@@ -93,11 +102,13 @@ aboutText.addEventListener("input", () => {
 });
 
 window.onbeforeunload = function () {
-	sessionStorage.setItem("firstName", fname.value);
-	sessionStorage.setItem("surname", lname.value);
-	sessionStorage.setItem("about", aboutText.value);
-	sessionStorage.setItem("email", email.value);
-	sessionStorage.setItem("telephone", phone.value);
+	if (!shouldEraseStorage) {
+		sessionStorage.setItem("firstName", fname.value);
+		sessionStorage.setItem("surname", lname.value);
+		sessionStorage.setItem("about", aboutText.value);
+		sessionStorage.setItem("email", email.value);
+		sessionStorage.setItem("telephone", phone.value);
+	}
 };
 
 window.onload = function () {

@@ -82,7 +82,7 @@ h6 {
   font-family: "HelveticaNeue";
   font-style: normal;
   font-weight: 500;
-  src: url("../../fonts/HelveticaNeue.ttc");
+  src: url("../fonts/HelveticaNeue.ttc");
 }
 .btn-primary {
   background: #6b40e3;
@@ -96,7 +96,7 @@ h6 {
 }
 
 .main-container {
-  background-image: url("../../images/main-bg.png");
+  background-image: url("../images/main-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
@@ -302,7 +302,7 @@ header .line {
 }
 
 .input-container.successful::after {
-  content: url("../../images/success.svg");
+  content: url("../images/success.svg");
   position: absolute;
   top: 1.8rem;
   right: 1.4rem;
@@ -310,7 +310,7 @@ header .line {
 }
 
 .input-container.danger::after {
-  content: url("../../images/danger.svg");
+  content: url("../images/danger.svg");
   position: absolute;
   top: 1.8rem;
   right: -3.2rem;
@@ -327,7 +327,7 @@ header .line {
 }
 
 .right-container::after {
-  content: url(../../images/weird-logo.svg);
+  content: url(../images/weird-logo.svg);
   position: absolute;
   left: 7.8rem;
   bottom: 4.4rem;
