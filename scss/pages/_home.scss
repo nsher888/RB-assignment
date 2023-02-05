@@ -1,5 +1,5 @@
-body {
-	background-image: url("/images/main-bg.png");
+.main-container {
+	background-image: url("../../images/main-bg.png");
 	background-position: center;
 	background-repeat: no-repeat;
 	display: flex;
@@ -39,4 +39,5 @@ header {
 	color: #fff;
 	font-style: normal;
 	font-weight: 500;
+	font-family: "HelveticaNeue";
 }
