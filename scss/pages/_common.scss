@@ -105,11 +105,11 @@
 	outline: none;
 }
 
-.text-input-c:hover,
-.text-input-c:focus {
-	box-shadow: inset 0 0 0 1px #bcbcbc;
-	color: #000000;
-}
+// .text-input-c:hover,
+// .text-input-c:focus {
+// 	box-shadow: inset 0 0 0 1px #bcbcbc;
+// 	color: #000000;
+// }
 
 .text-input-c:hover::placeholder,
 .text-input-c:focus::placeholder {
@@ -155,8 +155,25 @@
 }
 
 .input-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
 	width: 100%;
 	position: relative;
+
+	.text-input-c:hover,
+	.text-input-c:focus {
+		box-shadow: inset 0 0 0 1px #bcbcbc;
+		color: #000000;
+	}
+}
+
+.input-container.successful,
+.input-container.danger {
+	.text-input-c:hover,
+	.text-input-c:focus {
+		box-shadow: none;
+	}
 }
 
 .successful {
@@ -170,6 +187,10 @@
 .danger {
 	position: relative;
 
+	.label-c {
+		color: #ef5050;
+	}
+
 	input {
 		border: 1px solid #ef5050;
 	}
@@ -178,7 +199,7 @@
 .input-container.successful::after {
 	content: url("../images/success.svg");
 	position: absolute;
-	top: 1.8rem;
+	top: 5rem;
 	right: 1.4rem;
 	pointer-events: none;
 }
@@ -186,15 +207,24 @@
 .input-container.danger::after {
 	content: url("../images/danger.svg");
 	position: absolute;
-	top: 1.8rem;
+	top: 5rem;
 	right: -3.2rem;
 	pointer-events: none;
 }
 
-.successful:hover,
-.successful:active {
-	box-shadow: inset 0 0 0 1px #98e37e;
-}
+// .successful:hover,
+// .successful:active {
+// 	input {
+// 		box-shadow: inset 0 0 0 1px #98e37e;
+// 	}
+// }
+
+// .danger:hover,
+// .danger:active {
+// 	input {
+// 		box-shadow: inset 0 0 0 1px #ef5050;
+// 	}
+// }
 
 .btn-next {
 	float: right;
