@@ -1,32 +1,32 @@
-import {
-	isRequired,
-	isPhoneValid,
-	isEmailValid,
-	isGeoAndMin,
-	showError,
-	showSuccess,
-} from "./helpers.js";
+// import {
+// 	isRequired,
+// 	isPhoneValid,
+// 	isEmailValid,
+// 	isGeoAndMin,
+// 	showError,
+// 	showSuccess,
+// } from "./helpers.js";
 
-// PERSONAL INFO PAGE VALIDATION
-const fname = document.querySelector("#fname");
-const lname = document.querySelector("#lname");
-const email = document.querySelector("#email");
-const phone = document.querySelector("#phone");
-const twoGeorgians = document.querySelectorAll(".twoGeorgian");
-const fileInput = document.querySelector("#file");
-const aboutText = document.querySelector("#about");
-const aboutTextTitle = document.querySelector(".pre-about");
-const backArrow = document.querySelector("#back-arrow");
-const personalInfoBtn = document.querySelector("#personal-info-btn");
-const firstPageForm = document.querySelector("#fisrt-page-form");
+// // PERSONAL INFO PAGE VALIDATION
+// const fname = document.querySelector("#fname");
+// const lname = document.querySelector("#lname");
+// const email = document.querySelector("#email");
+// const phone = document.querySelector("#phone");
+// const twoGeorgians = document.querySelectorAll(".twoGeorgian");
+// const fileInput = document.querySelector("#file");
+// const aboutText = document.querySelector("#about");
+// const aboutTextTitle = document.querySelector(".pre-about");
+// const backArrow = document.querySelector("#back-arrow");
+// const personalInfoBtn = document.querySelector("#personal-info-btn");
+// const firstPageForm = document.querySelector("#fisrt-page-form");
 
-// // PREVIEW ELEMENTS
-const preImage = document.querySelector(".pre-image");
-const preName = document.querySelector(".pre-fname");
-const preLastName = document.querySelector(".pre-lname");
-const preEmail = document.querySelector(".pre-email");
-const prePhone = document.querySelector(".pre-phone");
-const preAboutText = document.querySelector(".pre-about-text");
+// // // PREVIEW ELEMENTS
+// const preImage = document.querySelector(".pre-image");
+// const preName = document.querySelector(".pre-fname");
+// const preLastName = document.querySelector(".pre-lname");
+// const preEmail = document.querySelector(".pre-email");
+// const prePhone = document.querySelector(".pre-phone");
+// const preAboutText = document.querySelector(".pre-about-text");
 
 // // ERASE STORAGE ON BACK ARROW CLICK
 
