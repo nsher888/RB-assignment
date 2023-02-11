@@ -3,6 +3,12 @@ export const isGeoAndMin = (input) => {
 	const re = /^[ა-ჰ]{2,}$/;
 	return re.test(input);
 };
+
+export const isTwoChar = (value) => {
+	const re = /^.{2,}$/;
+	return re.test(value);
+};
+
 export const isEmailValid = (email) => {
 	const re = /@redberry\.ge$/;
 	return re.test(email);
@@ -27,4 +33,18 @@ export const showSuccess = (input) => {
 	// Remove Error class
 	formField.classList.remove("danger");
 	formField.classList.add("successful");
+};
+
+export const debounce = (fn, delay = 150) => {
+	let timeoutId;
+	return (...args) => {
+		// cancel the previous timer
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+		}
+		// setup a new timer
+		timeoutId = setTimeout(() => {
+			fn.apply(null, args);
+		}, delay);
+	};
 };

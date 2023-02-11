@@ -6,20 +6,137 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>REDBERRY - Personal Info</title>
 		<link rel="stylesheet" href="css/main.css" />
+		<script src="./js/experience-page.js" defer type="module"></script>
 	</head>
 	<body class="split-container">
-		<a href="personal.html">
-			<div class="back-arrow">
-				<img src="images/left-arrow.svg" alt="" />
-			</div>
-		</a>
-
 		<div class="left-container">
+			<a href="personal.html">
+				<div class="back-arrow">
+					<img src="images/left-arrow.svg" alt="" />
+				</div>
+			</a>
 			<div class="page-title">
 				<h2>გამოცდილება</h2>
 				<p>2/3</p>
 			</div>
+			<form class="form" id="second-page-form">
+				<div class="form-group">
+					<div class="input-container mb-3">
+						<label for="position" class="label-c"
+							>თანამდებობა</label
+						>
+						<input
+							type="text"
+							id="position"
+							class="position text-input-c twoGeorgian"
+							placeholder="დეველოპერი, დიზაინერი, ა.შ."
+						/>
+						<p class="hint-c">მინიმუმ 2 სიმბოლო</p>
+					</div>
+
+					<div class="input-container mb-3">
+						<label for="employer" class="label-c"
+							>დამსაქმებელი</label
+						>
+						<input
+							type="text"
+							id="employer"
+							class="employer text-input-c twoGeorgian"
+							placeholder="დამსაქმებელი"
+						/>
+						<p class="hint-c">მინიმუმ 2 სიმბოლო</p>
+					</div>
+
+					<div class="dates-container flex-row mb-3">
+						<div class="input-container">
+							<label for="work-start" class="label-c"
+								>დაწყების რიცხვი</label
+							>
+							<input
+								type="date"
+								id="work-start"
+								class="work-start text-input-c date-input"
+							/>
+						</div>
+						<div class="input-container">
+							<label for="work-end" class="label-c"
+								>დაწყების რიცხვი</label
+							>
+							<input
+								type="date"
+								id="work-end"
+								class="work-end text-input-c date-input"
+							/>
+						</div>
+					</div>
+
+					<div class="input-container">
+						<label for="work-description" class="label-c"
+							>აღწერა</label
+						>
+						<textarea
+							name="work-description"
+							id="work-description"
+							class="work-description text-input-c work-deskription"
+							placeholder="როლი თანამდებობაზე და ზოგადი აღწერა"
+						></textarea>
+					</div>
+				</div>
+			</form>
+
+			<button id="add-more-experience" class="add-more">
+				მეტი გამოცდილების დამატება
+			</button>
 		</div>
-		<div class="right-container"></div>
+		<div class="right-container">
+			<img class="pre-image" />
+			<div class="pre-fullname flex-row">
+				<h3 class="pre-fname"></h3>
+				<h3 class="pre-lname"></h3>
+			</div>
+			<div class="full-email flex-row">
+				<img src="images/atsign.png" alt="" class="hidden" />
+				<p class="pre-email"></p>
+			</div>
+			<div class="full-phone flex-row">
+				<img src="images/phonesign.png" alt="" class="hidden" />
+				<p class="pre-phone"></p>
+			</div>
+
+			<h4 class="pre-about hidden">ჩემ შესახებ</h4>
+			<p class="pre-about-text"></p>
+			<div class="pre-experience">
+				<h4 class="pre-experience-title">ჩემ შესახებ</h4>
+				<!-- <div class="pre-experience-group">
+					<div class="pre-experience-group__initials">
+						<p class="pre-experience-group__initials__position">
+							React Native Developer
+						</p>
+						<p class="pre-experience-group__initials__employer">
+							Microsoft
+						</p>
+					</div>
+
+					<div class="pre-experience-group__dates">
+						<p class="pre-experience-group__dates__start">
+							2020-09-23
+						</p>
+
+						<p>-</p>
+						<p class="pre-experience-group__dates__end">
+							2020-09-22
+						</p>
+					</div>
+
+					<p class="pre-experience-group__description">
+						Experienced Javascript Native Developer with 5 years in
+						the industry. proficient withreact. Used problem-solving
+						aptitude to encahge application performance by
+						14%.created data visualisation tools and integrated
+						designs.
+					</p>
+				</div> -->
+			</div>
+		</div>
 	</body>
 </html>

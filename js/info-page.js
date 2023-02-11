@@ -5,6 +5,7 @@ import {
 	isGeoAndMin,
 	showError,
 	showSuccess,
+	debounce,
 } from "./helpers.js";
 
 // PERSONAL INFO PAGE VALIDATION
@@ -12,12 +13,9 @@ const fname = document.querySelector("#fname");
 const lname = document.querySelector("#lname");
 const email = document.querySelector("#email");
 const phone = document.querySelector("#phone");
-const twoGeorgians = document.querySelectorAll(".twoGeorgian");
 const fileInput = document.querySelector("#file");
 const aboutText = document.querySelector("#about");
-const aboutTextTitle = document.querySelector(".pre-about");
 const backArrow = document.querySelector("#back-arrow");
-const personalInfoBtn = document.querySelector("#personal-info-btn");
 const firstPageForm = document.querySelector("#fisrt-page-form");
 
 const preImage = document.querySelector(".pre-image");
@@ -139,19 +137,6 @@ fileInput.addEventListener("change", () => {
 });
 
 // Function to add little delay to validation
-const debounce = (fn, delay = 150) => {
-	let timeoutId;
-	return (...args) => {
-		// cancel the previous timer
-		if (timeoutId) {
-			clearTimeout(timeoutId);
-		}
-		// setup a new timer
-		timeoutId = setTimeout(() => {
-			fn.apply(null, args);
-		}, delay);
-	};
-};
 
 // Listening to changes on form's input elements
 firstPageForm.addEventListener(

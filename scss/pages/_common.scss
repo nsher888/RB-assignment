@@ -1,18 +1,19 @@
 // STYLING FOR BASE LAYOUT
 
 .split-container {
-	display: flex;
+	display: grid;
+	grid-template-columns: 57% 43%;
 	min-height: 100vh;
 }
 
 .left-container {
-	width: 57%;
+	// width: 57%;
 	background: #f9f9f9;
 	padding: 4.7rem 15rem 6.5rem 15rem;
 }
 
 .right-container {
-	width: 43%;
+	// width: 43%;
 	position: relative;
 }
 
@@ -294,4 +295,97 @@
 		margin-right: -40px;
 		float: right;
 	}
+
+	.pre-experience {
+		margin-top: 2.4rem;
+		border-top: 1px solid #c8c8c8;
+		padding-top: 2.4rem;
+
+		&-title {
+			font-size: 1.8rem;
+			color: #f93b1d;
+		}
+
+		&-group {
+			margin-top: 1.5rem;
+
+			border-bottom: 1px solid #c8c8c8;
+			padding-bottom: 2.4rem;
+
+			&__initials {
+				display: flex;
+				gap: 0.7rem;
+				font-size: 1.6rem;
+				color: #1a1a1a;
+				margin-bottom: 0.7rem;
+			}
+
+			&__dates {
+				display: flex;
+				gap: 0.7rem;
+				font-size: 1.6rem;
+				color: #919191;
+				margin-bottom: 1.6rem;
+			}
+
+			&__description {
+				font-size: 1.6rem;
+				color: #000000;
+			}
+		}
+	}
+}
+
+// SECOND PAGE
+
+.form-group {
+	padding-bottom: 5rem;
+	margin-bottom: 9em;
+	border-bottom: 1px solid #c1c1c1;
+}
+.dates-container {
+	width: 100%;
+
+	&.flex-row {
+		gap: 5.6rem;
+	}
+}
+
+.dates-container {
+	.flex-column {
+		width: 50%;
+	}
+}
+
+.date-input:hover,
+.date-input:focus {
+	box-shadow: inset 0 0 0 1px #bcbcbc;
+	color: #000000;
+}
+
+.work-deskription {
+	overflow: auto;
+	outline: none;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+
+	/*remove the resize handle on the bottom right*/
+	resize: none;
+	height: 12.3rem;
+}
+
+.add-more {
+	outline: none;
+	border: none;
+	background: #62a1eb;
+	border-radius: 4px;
+
+	padding: 1.4rem 2.1rem;
+
+	font-size: 1.6rem;
+	color: #fff;
+
+	cursor: pointer;
 }
