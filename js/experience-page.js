@@ -9,12 +9,6 @@ import {
 const addExperienceBtn = document.querySelector("#add-more-experience");
 const form = document.querySelector("#second-page-form");
 
-const position = document.querySelector(".position");
-const employer = document.querySelector(".employer");
-const workStart = document.querySelector(".work-start");
-const workEnd = document.querySelector(".work-end");
-const workDescription = document.querySelector(".work-description");
-
 const preImage = document.querySelector(".pre-image");
 const preName = document.querySelector(".pre-fname");
 const preLastName = document.querySelector(".pre-lname");
@@ -36,7 +30,6 @@ const checkPosition = (input) => {
 		showSuccess(input);
 		valid = true;
 	}
-
 	return valid;
 };
 
@@ -101,29 +94,6 @@ const checkWorkEnd = (input) => {
 
 	return valid;
 };
-
-// form.addEventListener(
-// 	"input",
-// 	debounce(function (e) {
-// 		switch (e.target.id) {
-// 			case "position":
-// 				checkPosition(position);
-// 				break;
-// 			case "employer":
-// 				checkEmployer(employer);
-// 				break;
-// 			case "work-description":
-// 				checkWorkDescription(workDescription);
-// 				break;
-// 			case "work-start":
-// 				checkWorkStart(workStart);
-// 				break;
-// 			case "work-end":
-// 				checkWorkEnd(workEnd);
-// 				break;
-// 		}
-// 	})
-// );
 
 function addFormGroup() {
 	const formGroup = document.querySelector(".form-group");
@@ -242,8 +212,46 @@ const checkSessionStorage = () => {
 	}
 };
 
+const renderPreExperience = (data) => {
+	let feedHtml = "";
+
+	data.forEach((group) => {
+		feedHtml += `<div class="pre-experience-group">
+		<div class="pre-experience-group__initials">
+			<p class="pre-experience-group__initials__position">${group.position}</p>
+			<p class="pre-experience-group__initials__employer">${group.employer}</p>
+		</div>
+
+		<div class="pre-experience-group__dates">
+			<p class="pre-experience-group__dates__start">${group.start_date}</p>
+			<p>-</p>
+			<p class="pre-experience-group__dates__end">${group.due_date}</p>
+		</div>
+
+		<p class="pre-experience-group__description">${group.description}</p>
+	</div>`;
+	});
+
+	return feedHtml;
+};
+
+const showPreRender = () => {
+	let retrievedWorkHistory = sessionStorage.getItem("workHistory");
+	let workHistoryArray = JSON.parse(retrievedWorkHistory);
+	const preContainer = document.querySelector(".pre-experience");
+	preContainer.innerHTML = renderPreExperience(workHistoryArray);
+};
+
+form.addEventListener("input", () => {
+	let retrievedWorkHistory = sessionStorage.getItem("workHistory");
+	let workHistoryArray = JSON.parse(retrievedWorkHistory);
+	const preContainer = document.querySelector(".pre-experience");
+	preContainer.innerHTML = renderPreExperience(workHistoryArray);
+});
+
 window.onload = function () {
 	checkSessionStorage();
+
 	let retrievedWorkHistory = sessionStorage.getItem("workHistory");
 	let workHistoryArray = JSON.parse(retrievedWorkHistory);
 
@@ -254,14 +262,16 @@ window.onload = function () {
 			}
 		}
 
-		const positions = document.querySelectorAll(".position");
-		const employers = document.querySelectorAll(".employer");
-		const workStarts = document.querySelectorAll(".work-start");
-		const workEnds = document.querySelectorAll(".work-end");
-		const workDescriptions = document.querySelectorAll(".work-description");
-
 		for (let i = 0; i < workHistoryArray.length; i++) {
 			let workHistory = workHistoryArray[i];
+
+			const positions = document.querySelectorAll(".position");
+			const employers = document.querySelectorAll(".employer");
+			const workStarts = document.querySelectorAll(".work-start");
+			const workEnds = document.querySelectorAll(".work-end");
+			const workDescriptions =
+				document.querySelectorAll(".work-description");
+
 			positions[i].value = workHistory.position;
 			employers[i].value = workHistory.employer;
 			workStarts[i].value = workHistory.start_date;
@@ -269,66 +279,47 @@ window.onload = function () {
 			workDescriptions[i].value = workHistory.description;
 		}
 
-		for (let i = 0; i < workHistoryArray.length; i++) {
-			let workHistory = workHistoryArray[i];
-			const experienceGroup = document.createElement("div");
-			experienceGroup.classList.add("pre-experience-group");
-
-			const initials = document.createElement("div");
-			initials.classList.add("pre-experience-group__initials");
-
-			const position = document.createElement("p");
-			position.classList.add("pre-experience-group__initials__position");
-			position.textContent = workHistory.position;
-			initials.appendChild(position);
-
-			const employer = document.createElement("p");
-			employer.classList.add("pre-experience-group__initials__employer");
-			employer.textContent = workHistory.employer;
-			initials.appendChild(employer);
-
-			const dates = document.createElement("div");
-			dates.classList.add("pre-experience-group__dates");
-
-			const start = document.createElement("p");
-			start.classList.add("pre-experience-group__dates__start");
-			start.textContent = workHistory.start_date;
-			dates.appendChild(start);
-
-			const separator = document.createElement("p");
-			separator.textContent = "-";
-			dates.appendChild(separator);
-
-			const end = document.createElement("p");
-			end.classList.add("pre-experience-group__dates__end");
-			end.textContent = workHistory.due_date;
-			dates.appendChild(end);
-
-			const description = document.createElement("p");
-			description.classList.add("pre-experience-group__description");
-			description.textContent = workHistory.description;
-
-			experienceGroup.appendChild(initials);
-			experienceGroup.appendChild(dates);
-			experienceGroup.appendChild(description);
-
-			const container = document.querySelector(".pre-experience");
-			container.appendChild(experienceGroup);
-		}
+		showPreRender();
 	}
-
-	form.addEventListener("input", () => {
-		let retrievedWorkHistory = sessionStorage.getItem("workHistory");
-		let workHistoryArray = JSON.parse(retrievedWorkHistory);
-
-		const prePositions = document.querySelectorAll(
-			".pre-experience-group__initials__position"
-		);
-
-		if (workHistoryArray) {
-			for (let i = 0; i < workHistoryArray.length; i++) {
-				prePositions[i].textContent = workHistoryArray[i].position;
-			}
-		}
-	});
 };
+
+const experienceBackBtn = document.querySelector("#experience-back-button");
+const experienceNextBtn = document.querySelector("#experience-next-button");
+
+experienceBackBtn.addEventListener("click", (e) => {
+	window.location.href = "./personal.html";
+});
+
+function checkInput(className, callback) {
+	const inputs = document.querySelectorAll(className);
+	const results = [];
+
+	inputs.forEach((element) => {
+		results.push(callback(element));
+	});
+
+	return results;
+}
+
+experienceNextBtn.addEventListener("click", () => {
+	const positionResults = checkInput(".position", checkPosition);
+	const employerResults = checkInput(".employer", checkEmployer);
+	const workDescriptionResults = checkInput(
+		".work-description",
+		checkWorkDescription
+	);
+	const workStartResults = checkInput(".work-start", checkWorkStart);
+	const workEndResults = checkInput(".work-end", checkWorkEnd);
+
+	const isFormValid = [
+		...positionResults,
+		...employerResults,
+		...workDescriptionResults,
+		...workStartResults,
+		...workEndResults,
+	].every((result) => result === true);
+
+	if (isFormValid) {
+		window.location.href = "./education.html";
+	}
+});

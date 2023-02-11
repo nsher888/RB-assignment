@@ -296,41 +296,42 @@
 		float: right;
 	}
 
-	.pre-experience {
+	.experience__wrapper {
 		margin-top: 2.4rem;
 		border-top: 1px solid #c8c8c8;
 		padding-top: 2.4rem;
 
-		&-title {
+		.pre-experience-title {
 			font-size: 1.8rem;
 			color: #f93b1d;
 		}
+		.pre-experience {
+			&-group {
+				margin-top: 1.5rem;
 
-		&-group {
-			margin-top: 1.5rem;
+				border-bottom: 1px solid #c8c8c8;
+				padding-bottom: 2.4rem;
 
-			border-bottom: 1px solid #c8c8c8;
-			padding-bottom: 2.4rem;
+				&__initials {
+					display: flex;
+					gap: 0.7rem;
+					font-size: 1.6rem;
+					color: #1a1a1a;
+					margin-bottom: 0.7rem;
+				}
 
-			&__initials {
-				display: flex;
-				gap: 0.7rem;
-				font-size: 1.6rem;
-				color: #1a1a1a;
-				margin-bottom: 0.7rem;
-			}
+				&__dates {
+					display: flex;
+					gap: 0.7rem;
+					font-size: 1.6rem;
+					color: #919191;
+					margin-bottom: 1.6rem;
+				}
 
-			&__dates {
-				display: flex;
-				gap: 0.7rem;
-				font-size: 1.6rem;
-				color: #919191;
-				margin-bottom: 1.6rem;
-			}
-
-			&__description {
-				font-size: 1.6rem;
-				color: #000000;
+				&__description {
+					font-size: 1.6rem;
+					color: #000000;
+				}
 			}
 		}
 	}
@@ -388,4 +389,28 @@
 	color: #fff;
 
 	cursor: pointer;
+}
+
+.buttons_wrapper {
+	margin-top: 11.1rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.dates-container {
+	.input-container.successful::after {
+		display: none;
+	}
+}
+
+.input-container.successful {
+	textarea {
+		border: 1px solid #98e37e;
+	}
+}
+
+.input-container.danger {
+	textarea {
+		border: 1px solid #ef5050;
+	}
 }

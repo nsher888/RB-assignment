@@ -382,35 +382,35 @@ header .line {
   margin-right: -40px;
   float: right;
 }
-.right-container .pre-experience {
+.right-container .experience__wrapper {
   margin-top: 2.4rem;
   border-top: 1px solid #c8c8c8;
   padding-top: 2.4rem;
 }
-.right-container .pre-experience-title {
+.right-container .experience__wrapper .pre-experience-title {
   font-size: 1.8rem;
   color: #f93b1d;
 }
-.right-container .pre-experience-group {
+.right-container .experience__wrapper .pre-experience-group {
   margin-top: 1.5rem;
   border-bottom: 1px solid #c8c8c8;
   padding-bottom: 2.4rem;
 }
-.right-container .pre-experience-group__initials {
+.right-container .experience__wrapper .pre-experience-group__initials {
   display: flex;
   gap: 0.7rem;
   font-size: 1.6rem;
   color: #1a1a1a;
   margin-bottom: 0.7rem;
 }
-.right-container .pre-experience-group__dates {
+.right-container .experience__wrapper .pre-experience-group__dates {
   display: flex;
   gap: 0.7rem;
   font-size: 1.6rem;
   color: #919191;
   margin-bottom: 1.6rem;
 }
-.right-container .pre-experience-group__description {
+.right-container .experience__wrapper .pre-experience-group__description {
   font-size: 1.6rem;
   color: #000000;
 }
@@ -456,4 +456,22 @@ header .line {
   font-size: 1.6rem;
   color: #fff;
   cursor: pointer;
+}
+
+.buttons_wrapper {
+  margin-top: 11.1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dates-container .input-container.successful::after {
+  display: none;
+}
+
+.input-container.successful textarea {
+  border: 1px solid #98e37e;
+}
+
+.input-container.danger textarea {
+  border: 1px solid #ef5050;
 }/*# sourceMappingURL=main.css.map */
