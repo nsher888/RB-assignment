@@ -47,13 +47,15 @@ async function fetchDegrees() {
 		"https://resume.redberryinternship.ge/api/degrees"
 	);
 	const data = await response.json();
-	const select = document.getElementById("degree-select");
-	for (const degree of data) {
-		const option = document.createElement("option");
-		option.id = degree.id;
-		option.value = degree.title;
-		option.text = degree.title;
-		select.appendChild(option);
+	const selects = document.querySelectorAll(".degree");
+	for (const select of selects) {
+		for (const degree of data) {
+			const option = document.createElement("option");
+			option.id = degree.id;
+			option.value = degree.title;
+			option.text = degree.title;
+			select.appendChild(option);
+		}
 	}
 }
 
@@ -311,3 +313,42 @@ window.onload = function () {
 		showPreRender();
 	}
 };
+
+const educationBackBtn = document.querySelector("#education-back-button");
+const educationNextBtn = document.querySelector("#education-next-button");
+
+educationBackBtn.addEventListener("click", (e) => {
+	window.location.href = "/experience.html";
+});
+
+function checkInput(className, callback) {
+	const inputs = document.querySelectorAll(className);
+	const results = [];
+
+	inputs.forEach((element) => {
+		results.push(callback(element));
+	});
+
+	return results;
+}
+
+educationNextBtn.addEventListener("click", () => {
+	const schoolResults = checkInput(".school", checkSchool);
+	const degreeResults = checkInput(".degree", checkDegree);
+	const schoolDescriptionResults = checkInput(
+		".education-description",
+		checkSchoolDescription
+	);
+	const schoolEndResults = checkInput(".school-end-date", checkSchoolEndDate);
+
+	const isFormValid = [
+		...schoolResults,
+		...degreeResults,
+		...schoolDescriptionResults,
+		...schoolEndResults,
+	].every((result) => result === true);
+
+	if (isFormValid) {
+		console.log("vualaa");
+	}
+});
