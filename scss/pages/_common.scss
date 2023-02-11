@@ -364,7 +364,7 @@
 	color: #000000;
 }
 
-.work-deskription {
+.work-description {
 	overflow: auto;
 	outline: none;
 
@@ -413,4 +413,117 @@
 	textarea {
 		border: 1px solid #ef5050;
 	}
+}
+
+// THIRD PAGE
+
+.education-wrapper {
+	gap: 3rem;
+}
+
+.education-description {
+	overflow: auto;
+	outline: none;
+
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+
+	/*remove the resize handle on the bottom right*/
+	resize: none;
+	height: 18.4rem;
+}
+
+// Select
+select {
+	// A reset of styles, including removing the default dropdown arrow
+	appearance: none;
+	// Additional resets for further consistency
+	background-color: transparent;
+	border: none;
+	padding: 0 1em 0 0;
+	margin: 0;
+	width: 100%;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: inherit;
+	line-height: inherit;
+	outline: none;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+.select {
+	width: 100%;
+	border: 1px solid #bcbcbc;
+	border-radius: 4px;
+	padding: 1.5rem 1.62rem;
+	font-size: 1.6rem;
+	color: rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+	background-color: #fff;
+}
+
+.select::after {
+	content: url("../../images/select-arrow.png");
+	position: absolute;
+	right: 15px;
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+.select.successful {
+	border: none;
+	box-shadow: inset 0 0 0 1px #98e37e;
+}
+
+.select.danger {
+	border: none;
+	box-shadow: inset 0 0 0 1px #ef5050;
+}
+
+.educations__wrapper {
+	margin-top: 2.6rem;
+
+	.educations__title {
+		font-size: 1.8rem;
+		color: #f93b1d;
+		font-weight: 700;
+	}
+}
+
+.pre-education-group {
+	margin-top: 1.6rem;
+	border-bottom: 1px solid #c8c8c8;
+	padding-bottom: 3.2rem;
+}
+
+.pre-education-group {
+	&-title {
+		font-size: 1.6rem;
+		color: #1a1a1a;
+		margin-bottom: 0.7rem;
+	}
+
+	&-degree {
+		font-size: 1.6rem;
+		color: #1a1a1a;
+	}
+
+	&-date {
+		font-size: 1.6rem;
+		color: #919191;
+		margin-bottom: 1.6rem;
+	}
+
+	&-description {
+		font-size: 1.6rem;
+		color: #000000;
+	}
+}
+
+.gap-08 {
+	gap: 0.8rem;
 }

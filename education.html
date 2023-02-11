@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>REDBERRY - Personal Info</title>
 		<link rel="stylesheet" href="css/main.css" />
+		<script src="./js/education-page.js" type="module"></script>
 	</head>
 	<body class="split-container">
 		<div class="left-container">
@@ -18,7 +19,119 @@
 				<h2>განათლება</h2>
 				<p>3/3</p>
 			</div>
+
+			<form class="form" id="third-page-form">
+				<div class="form-group">
+					<div class="input-container mb-3">
+						<label for="school" class="label-c">სასწავლებელი</label>
+						<input
+							type="text"
+							id="school"
+							class="school text-input-c"
+							placeholder="სასწავლებელი"
+						/>
+						<p class="hint-c">მინიმუმ 2 სიმბოლო</p>
+					</div>
+
+					<div class="flex-row mb-3 education-wrapper">
+						<div class="input-container">
+							<label for="degree-select" class="label-c"
+								>ხარისხი</label
+							>
+							<div class="select">
+								<select id="degree-select" class="degree">
+									<option value="" disabled selected>
+										აირჩიეთ ხარისხი
+									</option>
+								</select>
+							</div>
+						</div>
+						<div class="dates-container">
+							<div class="input-container">
+								<label for="work-start" class="label-c"
+									>დამთავრების რიცხვი</label
+								>
+								<input
+									type="date"
+									id="school-end-date"
+									class="text-input-c date-input school-end-date"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="input-container">
+						<label for="education-description" class="label-c"
+							>აღწერა</label
+						>
+						<textarea
+							name="education-description"
+							id="education-description"
+							class="education-description text-input-c"
+							placeholder="განათლების აღწერა"
+						></textarea>
+					</div>
+				</div>
+			</form>
+
+			<button id="add-more-education" class="add-more">
+				სხვა სასწავლებლის დამატება
+			</button>
 		</div>
-		<div class="right-container"></div>
+		<div class="right-container">
+			<img class="pre-image" />
+			<div class="pre-fullname flex-row">
+				<h3 class="pre-fname"></h3>
+				<h3 class="pre-lname"></h3>
+			</div>
+			<div class="full-email flex-row">
+				<img src="images/atsign.png" alt="" class="hidden" />
+				<p class="pre-email"></p>
+			</div>
+			<div class="full-phone flex-row">
+				<img src="images/phonesign.png" alt="" class="hidden" />
+				<p class="pre-phone"></p>
+			</div>
+
+			<h4 class="pre-about hidden">ჩემ შესახებ</h4>
+			<p class="pre-about-text"></p>
+
+			<div class="experience__wrapper">
+				<h4 class="pre-experience-title">გამოცდილება</h4>
+				<div class="pre-experience">
+					<!-- <div class="pre-experience-group">
+						<div class="pre-experience-group__initials">
+							<p class="pre-experience-group__initials__position"></p>
+							<p class="pre-experience-group__initials__employer"></p>
+						</div>
+	
+						<div class="pre-experience-group__dates">
+							<p class="pre-experience-group__dates__start"></p>
+	
+							<p>-</p>
+							<p class="pre-experience-group__dates__end"></p>
+						</div>
+	
+						<p class="pre-experience-group__description"></p>
+					</div> -->
+				</div>
+			</div>
+
+			<div class="educations__wrapper">
+				<div class="educations__title">განათლება</div>
+				<div class="pre-education">
+					<!-- <div class="pre-education-group">
+						<div class="flex-row gap-08">
+							<p class="pre-education-group-title"></p>
+							<p class="pre-education-group-degree"></p>
+						</div>
+						<p class="pre-education-group-date"></p>
+						<p class="pre-education-group-description"></p>
+					</div> -->
+				</div>
+			</div>
+		</div>
+
+		<!-- <button id="check"">awda</button> -->
 	</body>
 </html>
