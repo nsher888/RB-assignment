@@ -173,38 +173,38 @@ form.addEventListener("input", (e) => {
 		);
 	});
 
-	let workHistoryArray = [];
+	let experiencesrray = [];
 
 	for (let i = 0; i < positions.length; i++) {
-		let workHistory = {};
-		workHistory["position"] = positions[i].value;
-		workHistory["employer"] = employers[i].value;
-		workHistory["start_date"] = workStarts[i].value;
-		workHistory["due_date"] = workEnds[i].value;
-		workHistory["description"] = workDescriptions[i].value;
-		workHistoryArray.push(workHistory);
+		let experiences = {};
+		experiences["position"] = positions[i].value;
+		experiences["employer"] = employers[i].value;
+		experiences["start_date"] = workStarts[i].value;
+		experiences["due_date"] = workEnds[i].value;
+		experiences["description"] = workDescriptions[i].value;
+		experiencesrray.push(experiences);
 	}
 
-	sessionStorage.setItem("workHistory", JSON.stringify(workHistoryArray));
+	sessionStorage.setItem("experiences", JSON.stringify(experiencesrray));
 });
 
 const checkSessionStorage = () => {
-	if (sessionStorage.firstName) {
-		preName.innerHTML = sessionStorage.firstName;
+	if (sessionStorage.name) {
+		preName.innerHTML = sessionStorage.name;
 	}
 	if (sessionStorage.surname) {
 		preLastName.innerHTML = sessionStorage.surname;
 	}
-	if (sessionStorage.about) {
-		preAboutText.innerHTML = sessionStorage.about;
+	if (sessionStorage.about_me) {
+		preAboutText.innerHTML = sessionStorage.about_me;
 		preAboutText.previousElementSibling.classList.remove("hidden");
 	}
 	if (sessionStorage.email) {
 		preEmail.innerHTML = sessionStorage.email;
 		preEmail.previousElementSibling.classList.remove("hidden");
 	}
-	if (sessionStorage.telephone) {
-		prePhone.innerHTML = sessionStorage.telephone;
+	if (sessionStorage.phone_number) {
+		prePhone.innerHTML = sessionStorage.phone_number;
 		prePhone.previousElementSibling.classList.remove("hidden");
 	}
 	if (sessionStorage.image) {
@@ -236,34 +236,34 @@ const renderPreExperience = (data) => {
 };
 
 const showPreRender = () => {
-	let retrievedWorkHistory = sessionStorage.getItem("workHistory");
-	let workHistoryArray = JSON.parse(retrievedWorkHistory);
+	let retrievedexperiences = sessionStorage.getItem("experiences");
+	let experiencesArray = JSON.parse(retrievedexperiences);
 	const preContainer = document.querySelector(".pre-experience");
-	preContainer.innerHTML = renderPreExperience(workHistoryArray);
+	preContainer.innerHTML = renderPreExperience(experiencesArray);
 };
 
 form.addEventListener("input", () => {
-	let retrievedWorkHistory = sessionStorage.getItem("workHistory");
-	let workHistoryArray = JSON.parse(retrievedWorkHistory);
+	let retrievedexperiences = sessionStorage.getItem("experiences");
+	let experiencesArray = JSON.parse(retrievedexperiences);
 	const preContainer = document.querySelector(".pre-experience");
-	preContainer.innerHTML = renderPreExperience(workHistoryArray);
+	preContainer.innerHTML = renderPreExperience(experiencesArray);
 });
 
 window.onload = function () {
 	checkSessionStorage();
 
-	let retrievedWorkHistory = sessionStorage.getItem("workHistory");
-	let workHistoryArray = JSON.parse(retrievedWorkHistory);
+	let retrievedexperiences = sessionStorage.getItem("experiences");
+	let experiencesArray = JSON.parse(retrievedexperiences);
 
-	if (workHistoryArray) {
-		if (workHistoryArray.length > 0) {
-			for (let i = 0; i < workHistoryArray.length - 1; i++) {
+	if (experiencesArray) {
+		if (experiencesArray.length > 0) {
+			for (let i = 0; i < experiencesArray.length - 1; i++) {
 				addFormGroup();
 			}
 		}
 
-		for (let i = 0; i < workHistoryArray.length; i++) {
-			let workHistory = workHistoryArray[i];
+		for (let i = 0; i < experiencesArray.length; i++) {
+			let experience = experiencesArray[i];
 
 			const positions = document.querySelectorAll(".position");
 			const employers = document.querySelectorAll(".employer");
@@ -272,11 +272,11 @@ window.onload = function () {
 			const workDescriptions =
 				document.querySelectorAll(".work-description");
 
-			positions[i].value = workHistory.position;
-			employers[i].value = workHistory.employer;
-			workStarts[i].value = workHistory.start_date;
-			workEnds[i].value = workHistory.due_date;
-			workDescriptions[i].value = workHistory.description;
+			positions[i].value = experience.position;
+			employers[i].value = experience.employer;
+			workStarts[i].value = experience.start_date;
+			workEnds[i].value = experience.due_date;
+			workDescriptions[i].value = experience.description;
 		}
 
 		showPreRender();

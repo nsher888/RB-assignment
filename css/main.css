@@ -521,7 +521,7 @@ select::-ms-expand {
 }
 
 .select::after {
-  content: url("../../images/select-arrow.png");
+  content: url("./../images/select-arrow.png");
   position: absolute;
   right: 15px;
   width: 1.8rem;

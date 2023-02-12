@@ -86,10 +86,10 @@ const renderExperiences = () => {
 	};
 
 	const showPreRender = () => {
-		let retrievedWorkHistory = sessionStorage.getItem("workHistory");
-		let workHistoryArray = JSON.parse(retrievedWorkHistory);
+		let retrievedexperiences = sessionStorage.getItem("experiences");
+		let experiencesArray = JSON.parse(retrievedexperiences);
 		const preContainer = document.querySelector(".pre-experience");
-		preContainer.innerHTML = renderPreExperience(workHistoryArray);
+		preContainer.innerHTML = renderPreExperience(experiencesArray);
 	};
 
 	showPreRender();
@@ -234,7 +234,7 @@ form.addEventListener("input", () => {
 		);
 	});
 
-	let workHistoryArray = [];
+	let experiencesArray = [];
 
 	for (let i = 0; i < schools.length; i++) {
 		let educations = {};
@@ -244,10 +244,10 @@ form.addEventListener("input", () => {
 		educations["id"] = selectedIndex;
 		educations["due_date"] = schoolEndDates[i].value;
 		educations["description"] = schoolDescriptions[i].value;
-		workHistoryArray.push(educations);
+		experiencesArray.push(educations);
 	}
 
-	sessionStorage.setItem("educations", JSON.stringify(workHistoryArray));
+	sessionStorage.setItem("educations", JSON.stringify(experiencesArray));
 });
 
 const renderPreEducation = (data) => {
@@ -349,6 +349,48 @@ educationNextBtn.addEventListener("click", () => {
 	].every((result) => result === true);
 
 	if (isFormValid) {
-		console.log("vualaa");
+		var formData = new FormData();
+		for (var key in sessionStorage) {
+			if (
+				sessionStorage.hasOwnProperty(key) &&
+				key !== "IsThisFirstTime_Log_From_LiveServer"
+			) {
+				if (key === "experiences" || key === "educations") {
+					let parsed = JSON.parse(sessionStorage.getItem(key));
+					parsed.forEach((item) => {
+						delete item.degree;
+					});
+					formData.append(key, JSON.stringify(parsed));
+				} else if (key === "image") {
+					let imageBlob = base64ToBlob(sessionStorage.getItem(key));
+					formData.append(key, imageBlob, "image.png");
+				} else {
+					formData.append(key, sessionStorage.getItem(key));
+				}
+			}
+		}
+
+		fetch("https://resume.redberryinternship.ge/api/cvs", {
+			method: "POST",
+			body: formData,
+		})
+			.then((response) => {
+				console.log(response);
+			})
+			.then((data) => console.log(data))
+			.catch((error) => console.error(error));
+
+		function base64ToBlob(base64) {
+			let byteString = atob(base64.split(",")[1]);
+			let mimeString = base64.split(",")[0].split(":")[1].split(";")[0];
+			let arrayBuffer = new ArrayBuffer(byteString.length);
+			let _ia = new Uint8Array(arrayBuffer);
+			for (let i = 0; i < byteString.length; i++) {
+				_ia[i] = byteString.charCodeAt(i);
+			}
+			let dataView = new DataView(arrayBuffer);
+			let blob = new Blob([dataView], { type: mimeString });
+			return blob;
+		}
 	}
 });
