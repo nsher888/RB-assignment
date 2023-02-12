@@ -6,6 +6,8 @@ import {
 	showSuccess,
 } from "./helpers.js";
 
+import axios from "axios";
+
 const preImage = document.querySelector(".pre-image");
 const preName = document.querySelector(".pre-fname");
 const preLastName = document.querySelector(".pre-lname");
@@ -349,7 +351,7 @@ educationNextBtn.addEventListener("click", () => {
 	].every((result) => result === true);
 
 	if (isFormValid) {
-		var formData = new FormData();
+		var data = {};
 		for (var key in sessionStorage) {
 			if (
 				sessionStorage.hasOwnProperty(key) &&
@@ -360,37 +362,42 @@ educationNextBtn.addEventListener("click", () => {
 					parsed.forEach((item) => {
 						delete item.degree;
 					});
-					formData.append(key, JSON.stringify(parsed));
+					data[key] = parsed;
 				} else if (key === "image") {
-					let imageBlob = base64ToBlob(sessionStorage.getItem(key));
-					formData.append(key, imageBlob, "image.png");
+					let image = sessionStorage.getItem(key);
+					let contentType = "image/png"; // you can change it to match the actual image type
+					let blob = base64ToBlob(image, contentType);
+					data[key] = blob;
 				} else {
-					formData.append(key, sessionStorage.getItem(key));
+					data[key] = sessionStorage.getItem(key);
 				}
 			}
 		}
 
-		fetch("https://resume.redberryinternship.ge/api/cvs", {
-			method: "POST",
-			body: formData,
-		})
+		console.log(data);
+
+		axios
+			.post("https://resume.redberryinternship.ge/api/cvs", data, {
+				headers: {
+					"Content-Type": "multipart/form-data",
+				},
+			})
 			.then((response) => {
 				console.log(response);
 			})
-			.then((data) => console.log(data))
 			.catch((error) => console.error(error));
+	}
 
-		function base64ToBlob(base64) {
-			let byteString = atob(base64.split(",")[1]);
-			let mimeString = base64.split(",")[0].split(":")[1].split(";")[0];
-			let arrayBuffer = new ArrayBuffer(byteString.length);
-			let _ia = new Uint8Array(arrayBuffer);
-			for (let i = 0; i < byteString.length; i++) {
-				_ia[i] = byteString.charCodeAt(i);
-			}
-			let dataView = new DataView(arrayBuffer);
-			let blob = new Blob([dataView], { type: mimeString });
-			return blob;
+	function base64ToBlob(base64) {
+		let byteString = atob(base64.split(",")[1]);
+		let mimeString = base64.split(",")[0].split(":")[1].split(";")[0];
+		let arrayBuffer = new ArrayBuffer(byteString.length);
+		let _ia = new Uint8Array(arrayBuffer);
+		for (let i = 0; i < byteString.length; i++) {
+			_ia[i] = byteString.charCodeAt(i);
 		}
+		let dataView = new DataView(arrayBuffer);
+		let blob = new Blob([dataView], { type: mimeString });
+		return blob;
 	}
 });
