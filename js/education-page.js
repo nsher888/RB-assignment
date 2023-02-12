@@ -6,7 +6,7 @@ import {
 	showSuccess,
 } from "./helpers.js";
 
-import axios from "axios";
+// import axios from "axios";
 
 const preImage = document.querySelector(".pre-image");
 const preName = document.querySelector(".pre-fname");
@@ -243,7 +243,7 @@ form.addEventListener("input", () => {
 		let selectedIndex = degrees[i].selectedIndex;
 		educations["institute"] = schools[i].value;
 		educations["degree"] = degrees[i].value;
-		educations["id"] = selectedIndex;
+		educations["degree_id"] = selectedIndex;
 		educations["due_date"] = schoolEndDates[i].value;
 		educations["description"] = schoolDescriptions[i].value;
 		experiencesArray.push(educations);
@@ -383,7 +383,7 @@ educationNextBtn.addEventListener("click", () => {
 				},
 			})
 			.then((response) => {
-				console.log(response);
+				console.log(response.data);
 			})
 			.catch((error) => console.error(error));
 	}
