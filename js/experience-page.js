@@ -23,6 +23,15 @@ backArrow.addEventListener("click", () => {
 	sessionStorage.clear();
 });
 
+const checkForPadding = () => {
+	const infoWrapper = document.querySelector(".info__wrapper");
+	const preAbout = document.querySelector(".pre-about");
+
+	if (preAbout.classList.contains("hidden")) {
+		infoWrapper.classList.add("mb-12");
+	}
+};
+
 // Functions for validadtion
 const checkPosition = (input) => {
 	let valid = false;
@@ -226,7 +235,7 @@ const renderPreExperience = (data) => {
 	data.forEach((group) => {
 		feedHtml += `<div class="pre-experience-group">
 		<div class="pre-experience-group__initials">
-			<p class="pre-experience-group__initials__position">${group.position},</p>
+			<p class="pre-experience-group__initials__position">${group.position}</p>
 			<p class="pre-experience-group__initials__employer">${group.employer}</p>
 		</div>
 
@@ -259,6 +268,7 @@ form.addEventListener("input", () => {
 
 window.onload = function () {
 	checkSessionStorage();
+	checkForPadding();
 
 	let retrievedexperiences = sessionStorage.getItem("experiences");
 	let experiencesArray = JSON.parse(retrievedexperiences);

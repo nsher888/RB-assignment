@@ -251,6 +251,15 @@ form.addEventListener("input", () => {
 	sessionStorage.setItem("educations", JSON.stringify(experiencesArray));
 });
 
+const checkForPadding = () => {
+	const infoWrapper = document.querySelector(".info__wrapper");
+	const preAbout = document.querySelector(".pre-about");
+
+	if (preAbout.classList.contains("hidden")) {
+		infoWrapper.classList.add("mb-12");
+	}
+};
+
 const renderPreEducation = (data) => {
 	let feedHtml = "";
 
@@ -285,6 +294,8 @@ form.addEventListener("input", () => {
 window.onload = function () {
 	let retrieveEducation = sessionStorage.getItem("educations");
 	let educationArray = JSON.parse(retrieveEducation);
+	checkForPadding();
+
 	fetchDegrees();
 	renderExperiences();
 
