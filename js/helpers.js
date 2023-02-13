@@ -15,7 +15,7 @@ export const isEmailValid = (email) => {
 };
 
 export const isPhoneValid = (phone) => {
-	const re = /^(\+?995)?(79\d{7}|5\d{8})$/;
+	const re = /^\+995(79\d{7}|5\d{8})$/;
 	return re.test(phone);
 };
 
@@ -35,7 +35,7 @@ export const showSuccess = (input) => {
 	formField.classList.add("successful");
 };
 
-export const debounce = (fn, delay = 150) => {
+export const debounce = (fn, delay = 50) => {
 	let timeoutId;
 	return (...args) => {
 		// cancel the previous timer

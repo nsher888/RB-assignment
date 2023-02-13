@@ -32,9 +32,15 @@ function showHidden(initial, pre) {
 	pre.innerHTML = initial.value;
 }
 
+// backArrow.addEventListener("click", () => {
+// 	shouldEraseStorage = true;
+// 	sessionStorage.clear();
+// });
+
 let shouldEraseStorage = false;
 backArrow.addEventListener("click", () => {
 	shouldEraseStorage = true;
+	window.location.href = "./index.html";
 	sessionStorage.clear();
 });
 
@@ -124,6 +130,8 @@ const checkFile = () => {
 };
 
 fileInput.addEventListener("change", () => {
+	preImage.style.display = "block";
+
 	const file = fileInput.files[0];
 	const objectUrl = URL.createObjectURL(file);
 	preImage.src = objectUrl;
@@ -135,8 +143,6 @@ fileInput.addEventListener("change", () => {
 	});
 	reader.readAsDataURL(file);
 });
-
-// Function to add little delay to validation
 
 // Listening to changes on form's input elements
 firstPageForm.addEventListener(
@@ -204,6 +210,8 @@ window.onload = function () {
 		prePhone.previousElementSibling.classList.remove("hidden");
 	}
 	if (sessionStorage.image) {
+		preImage.style.display = "block";
+
 		preImage.src = sessionStorage.image;
 	}
 };

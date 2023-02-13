@@ -14,27 +14,34 @@ const preLastName = document.querySelector(".pre-lname");
 const preEmail = document.querySelector(".pre-email");
 const prePhone = document.querySelector(".pre-phone");
 const preAboutText = document.querySelector(".pre-about-text");
+const backArrow = document.querySelector("#back-arrow");
+const educationWrapper = document.querySelector(".educations__wrapper");
 
 const addEducationBtn = document.querySelector("#add-more-education");
 const form = document.querySelector("#third-page-form");
 
+backArrow.addEventListener("click", () => {
+	window.location.href = "./index.html";
+	sessionStorage.clear();
+});
+
 const checkSessionStorage = () => {
-	if (sessionStorage.firstName) {
-		preName.innerHTML = sessionStorage.firstName;
+	if (sessionStorage.name) {
+		preName.innerHTML = sessionStorage.name;
 	}
-	if (sessionStorage.surname) {
-		preLastName.innerHTML = sessionStorage.surname;
+	if (sessionStorage.name) {
+		preLastName.innerHTML = sessionStorage.name;
 	}
-	if (sessionStorage.about) {
-		preAboutText.innerHTML = sessionStorage.about;
+	if (sessionStorage.about_me) {
+		preAboutText.innerHTML = sessionStorage.about_me;
 		preAboutText.previousElementSibling.classList.remove("hidden");
 	}
 	if (sessionStorage.email) {
 		preEmail.innerHTML = sessionStorage.email;
 		preEmail.previousElementSibling.classList.remove("hidden");
 	}
-	if (sessionStorage.telephone) {
-		prePhone.innerHTML = sessionStorage.telephone;
+	if (sessionStorage.phone_number) {
+		prePhone.innerHTML = sessionStorage.phone_number;
 		prePhone.previousElementSibling.classList.remove("hidden");
 	}
 	if (sessionStorage.image) {
@@ -118,15 +125,6 @@ const checkDegree = (input) => {
 
 	const degreeValue = input.value;
 
-	// if (!isRequired(degreeValue)) {
-	// 	showError(input);
-	// } else {
-	// 	showSuccess(input);
-	// 	valid = true;
-	// }
-
-	console.log(input.value);
-
 	if (input.value === "") {
 		showError(input);
 	} else {
@@ -190,6 +188,7 @@ addEducationBtn.addEventListener("click", () => {
 });
 
 form.addEventListener("input", () => {
+	educationWrapper.style.display = "block";
 	const schools = document.querySelectorAll(".school");
 
 	schools.forEach((school) => {
@@ -290,6 +289,8 @@ window.onload = function () {
 	renderExperiences();
 
 	if (educationArray) {
+		educationWrapper.style.display = "block";
+
 		if (educationArray.length > 0) {
 			for (let i = 0; i < educationArray.length - 1; i++) {
 				addFormGroup();
@@ -320,7 +321,7 @@ const educationBackBtn = document.querySelector("#education-back-button");
 const educationNextBtn = document.querySelector("#education-next-button");
 
 educationBackBtn.addEventListener("click", (e) => {
-	window.location.href = "/experience.html";
+	window.location.href = "./experience.html";
 });
 
 function checkInput(className, callback) {
@@ -374,8 +375,6 @@ educationNextBtn.addEventListener("click", () => {
 			}
 		}
 
-		console.log(data);
-
 		axios
 			.post("https://resume.redberryinternship.ge/api/cvs", data, {
 				headers: {
@@ -383,7 +382,16 @@ educationNextBtn.addEventListener("click", () => {
 				},
 			})
 			.then((response) => {
-				console.log(response.data);
+				if (response.status === 201) {
+					window.location.href = "./resume.html";
+					const responseData = response.data;
+					sessionStorage.clear();
+
+					sessionStorage.setItem(
+						"responseData",
+						JSON.stringify(responseData)
+					);
+				}
 			})
 			.catch((error) => console.error(error));
 	}

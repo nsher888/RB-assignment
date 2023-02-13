@@ -15,6 +15,13 @@ const preLastName = document.querySelector(".pre-lname");
 const preEmail = document.querySelector(".pre-email");
 const prePhone = document.querySelector(".pre-phone");
 const preAboutText = document.querySelector(".pre-about-text");
+const experienceWrapper = document.querySelector(".experience__wrapper");
+
+const backArrow = document.querySelector("#back-arrow");
+backArrow.addEventListener("click", () => {
+	window.location.href = "./index.html";
+	sessionStorage.clear();
+});
 
 // Functions for validadtion
 const checkPosition = (input) => {
@@ -118,6 +125,7 @@ addExperienceBtn.addEventListener("click", () => {
 });
 
 form.addEventListener("input", (e) => {
+	experienceWrapper.style.display = "block";
 	const positions = document.querySelectorAll(".position");
 
 	positions.forEach((position) => {
@@ -218,7 +226,7 @@ const renderPreExperience = (data) => {
 	data.forEach((group) => {
 		feedHtml += `<div class="pre-experience-group">
 		<div class="pre-experience-group__initials">
-			<p class="pre-experience-group__initials__position">${group.position}</p>
+			<p class="pre-experience-group__initials__position">${group.position},</p>
 			<p class="pre-experience-group__initials__employer">${group.employer}</p>
 		</div>
 
@@ -256,6 +264,8 @@ window.onload = function () {
 	let experiencesArray = JSON.parse(retrievedexperiences);
 
 	if (experiencesArray) {
+		experienceWrapper.style.display = "block";
+
 		if (experiencesArray.length > 0) {
 			for (let i = 0; i < experiencesArray.length - 1; i++) {
 				addFormGroup();
