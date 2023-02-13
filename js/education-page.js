@@ -353,26 +353,53 @@ educationNextBtn.addEventListener("click", () => {
 
 	if (isFormValid) {
 		var data = {};
-		for (var key in sessionStorage) {
-			if (
-				sessionStorage.hasOwnProperty(key) &&
-				key !== "IsThisFirstTime_Log_From_LiveServer"
-			) {
-				if (key === "experiences" || key === "educations") {
-					let parsed = JSON.parse(sessionStorage.getItem(key));
-					parsed.forEach((item) => {
-						delete item.degree;
-					});
-					data[key] = parsed;
-				} else if (key === "image") {
-					let image = sessionStorage.getItem(key);
-					let contentType = "image/png"; // you can change it to match the actual image type
-					let blob = base64ToBlob(image, contentType);
-					data[key] = blob;
-				} else {
-					data[key] = sessionStorage.getItem(key);
-				}
-			}
+
+		// Add name
+		data["name"] = sessionStorage.getItem("name");
+
+		// Add lastname
+		data["surname"] = sessionStorage.getItem("surname");
+
+		// Add email
+		data["email"] = sessionStorage.getItem("email");
+
+		// Add phone_number
+		data["phone_number"] = sessionStorage.getItem("phone_number");
+
+		// Add experiences
+		let experiences = JSON.parse(sessionStorage.getItem("experiences"));
+		let filteredExperiences = experiences.map((exp) => {
+			return {
+				position: exp.position,
+				employer: exp.employer,
+				start_date: exp.start_date,
+				due_date: exp.due_date,
+				description: exp.description,
+			};
+		});
+		data["experiences"] = filteredExperiences;
+
+		// Add educations
+		let educations = JSON.parse(sessionStorage.getItem("educations"));
+		let filteredEducations = educations.map((edu) => {
+			return {
+				institute: edu.institute,
+				degree_id: edu.degree_id,
+				due_date: edu.due_date,
+				description: edu.description,
+			};
+		});
+		data["educations"] = filteredEducations;
+
+		// Add image
+		let image = sessionStorage.getItem("image");
+		let contentType = "image/png";
+		let blob = base64ToBlob(image, contentType);
+		data["image"] = blob;
+
+		// Add about_me if it exists
+		if (sessionStorage.getItem("about_me")) {
+			data["about_me"] = sessionStorage.getItem("about_me");
 		}
 
 		axios
